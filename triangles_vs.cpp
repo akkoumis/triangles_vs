@@ -108,6 +108,12 @@ int main()
 	}
 	printf("\n");*/
 
+	end = clock();
+	// Calculating total time taken by the program. 
+	double time_taken = double(end - start) / double(CLOCKS_PER_SEC);
+	printf("A^2 time = %f\n", time_taken);
+
+	start = clock();
 
 	// Hadamard product and sum together
 	int sum = 0;
@@ -140,8 +146,8 @@ int main()
 
 	end = clock();
 	// Calculating total time taken by the program. 
-	double time_taken = double(end - start) / double(CLOCKS_PER_SEC);
-	printf("Wall time = %f\n", time_taken);
+	 time_taken = double(end - start) / double(CLOCKS_PER_SEC);
+	printf("Hadamard time = %f\n", time_taken);
 
 	printf("\n\nsum = %d", sum);
 
