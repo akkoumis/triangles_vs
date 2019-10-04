@@ -111,7 +111,8 @@ int main()
 
 	// Hadamard product and sum together
 	int sum = 0;
-	for (int r_index = 0; r_index < no_rows_A; r_index++)// Processing each rows of the matrices
+	#pragma omp parallel for shared(sum) reduction(+: sum)
+	for(int r_index = 0; r_index < no_rows_A; r_index++)// Processing each rows of the matrices
 	{
 		int A_lower_bound = rows_start_A[r_index] - 1;
 		int A_upper_bound = rows_end_A[r_index] - 2;
