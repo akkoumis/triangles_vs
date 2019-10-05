@@ -17,8 +17,14 @@ MKL_INT m = 5, nnz = 13;
 int main()
 {
 	bool debugging = false;
-	int NNZ = 6629222;
-	MKL_INT sizeOfMatrix = 448695;
+	
+	//int NNZ = 6629222;	// auto
+	//MKL_INT sizeOfMatrix = 448695;
+	int NNZ = 16313034; // britain
+	MKL_INT sizeOfMatrix = 7733822;
+	//int NNZ = ;	// delaunay
+	//MKL_INT sizeOfMatrix = ;
+
 	MKL_INT* row = (MKL_INT*)malloc(NNZ * sizeof(MKL_INT));
 	MKL_INT* col = (MKL_INT*)malloc(NNZ * sizeof(MKL_INT));
 	float* val = (float*)malloc(NNZ * sizeof(float));
@@ -29,7 +35,11 @@ int main()
 	FILE* fp;
 	//char buff[255];
 	int buff_int=0;
-	fp = fopen("auto_int.txt", "r");
+	
+	//fp = fopen("auto_int.txt", "r");	//auto
+	fp = fopen("britain_A.txt", "r");	//britain
+	//fp = fopen("auto_int.txt", "r");	//delaunay
+	
 	for (int i = 0; i < NNZ; i++)
 	{
 		fscanf(fp, "%d", &row[i]);
