@@ -60,9 +60,9 @@ int main()
 	status = mkl_sparse_convert_csr(A_COO, SPARSE_OPERATION_NON_TRANSPOSE, &A);
 	if (status == SPARSE_STATUS_SUCCESS && debugging)
 		printf("Matrix A converted to CSR with SUCCESS.\n");
-	status = mkl_sparse_order(A);
+	/*status = mkl_sparse_order(A);
 	if (status == SPARSE_STATUS_SUCCESS && debugging)
-		printf("A ORDER done with SUCCESS.\n");
+		printf("A ORDER done with SUCCESS.\n");*/
 
 	struct matrix_descr generalDesc;
 	generalDesc.type = SPARSE_MATRIX_TYPE_GENERAL;
