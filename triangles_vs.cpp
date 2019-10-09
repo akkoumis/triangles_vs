@@ -18,10 +18,10 @@ int main()
 {
 	bool debugging = false;
 
-	//int NNZ = 6629222;	// auto
-	//MKL_INT sizeOfMatrix = 448695;
-	int NNZ = 16313034; // britain
-	MKL_INT sizeOfMatrix = 7733822;
+	int NNZ = 6629222;	// auto
+	MKL_INT sizeOfMatrix = 448695;
+	//int NNZ = 16313034; // britain
+	//MKL_INT sizeOfMatrix = 7733822;
 	//int NNZ = 25165738;	// delaunay
 	//MKL_INT sizeOfMatrix = 4194304;
 
@@ -37,14 +37,14 @@ int main()
 	//char buff[255];
 	int buff_int = 0;
 
-	//fp = fopen("auto_A.txt", "r");	//auto
-	fp = fopen("britain_A.txt", "r");	//britain
+	fp = fopen("auto_A.txt", "r");	//auto
+	//fp = fopen("britain_A.txt", "r");	//britain
 	//fp = fopen("delaunay_A.txt", "r");	//delaunay
 
 	for (int i = 0; i < NNZ; i++)
 	{
-				fscanf(fp, "%d", &col[i]);
-fscanf(fp, "%d", &row[i]);
+		fscanf(fp, "%d", &col[i]);
+		fscanf(fp, "%d", &row[i]);
 		fscanf(fp, "%f", &val[i]);
 	}
 	fclose(fp);
