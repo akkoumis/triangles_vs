@@ -49,7 +49,6 @@ int main()
 	}
 	fclose(fp);
 
-	start = clock();
 
 	// Creating the Sparse Matrix A in COO format
 	status = mkl_sparse_s_create_coo(&A_COO, SPARSE_INDEX_BASE_ONE, sizeOfMatrix, sizeOfMatrix, NNZ, row, col, val);
@@ -63,6 +62,8 @@ int main()
 	/*status = mkl_sparse_order(A);
 	if (status == SPARSE_STATUS_SUCCESS && debugging)
 		printf("A ORDER done with SUCCESS.\n");*/
+	
+	start = clock();
 
 	struct matrix_descr generalDesc;
 	generalDesc.type = SPARSE_MATRIX_TYPE_GENERAL;
