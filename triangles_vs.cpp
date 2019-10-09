@@ -20,10 +20,10 @@ int main()
 
 	//int NNZ = 6629222;	// auto
 	//MKL_INT sizeOfMatrix = 448695;
-	//int NNZ = 16313034; // britain
-	//MKL_INT sizeOfMatrix = 7733822;
-	int NNZ = 25165738;	// delaunay
-	MKL_INT sizeOfMatrix = 4194304;
+	int NNZ = 16313034; // britain
+	MKL_INT sizeOfMatrix = 7733822;
+	//int NNZ = 25165738;	// delaunay
+	//MKL_INT sizeOfMatrix = 4194304;
 
 	MKL_INT* row = (MKL_INT*)malloc(NNZ * sizeof(MKL_INT));
 	MKL_INT* col = (MKL_INT*)malloc(NNZ * sizeof(MKL_INT));
@@ -31,20 +31,20 @@ int main()
 	sparse_matrix_t A_COO, A, A2;
 	sparse_status_t status;
 	clock_t start, end;
-	double time_taken;
+	double time_taken, total_time_taken = 0;
 
 	FILE* fp;
 	//char buff[255];
 	int buff_int = 0;
 
 	//fp = fopen("auto_A.txt", "r");	//auto
-	//fp = fopen("britain_A.txt", "r");	//britain
-	fp = fopen("delaunay_A.txt", "r");	//delaunay
+	fp = fopen("britain_A.txt", "r");	//britain
+	//fp = fopen("delaunay_A.txt", "r");	//delaunay
 
 	for (int i = 0; i < NNZ; i++)
 	{
-		fscanf(fp, "%d", &row[i]);
-		fscanf(fp, "%d", &col[i]);
+				fscanf(fp, "%d", &col[i]);
+fscanf(fp, "%d", &row[i]);
 		fscanf(fp, "%f", &val[i]);
 	}
 	fclose(fp);
@@ -120,12 +120,13 @@ int main()
 	}
 	printf("\n");*/
 
-	//end = clock();
-	//// Calculating total time taken by the program. 
-	// time_taken = double(end - start) / double(CLOCKS_PER_SEC);
-	//printf("A^2 time = %f\n", time_taken);
-	//
-	//start = clock();
+	end = clock();
+	// Calculating total time taken by the program. 
+	 time_taken = double(end - start) / double(CLOCKS_PER_SEC);
+	printf("A^2 time = %f\n", time_taken);
+	total_time_taken += time_taken;
+	
+	start = clock();
 
 	// Hadamard product and sum together
 	int sum = 0;
@@ -159,7 +160,9 @@ int main()
 	end = clock();
 	// Calculating total time taken by the program. 
 	time_taken = double(end - start) / double(CLOCKS_PER_SEC);
-	printf("Wall time = %f\n", time_taken);
+	printf("Hadamard time = %f\n", time_taken);
+	total_time_taken += time_taken;
+	printf("Wall time = %f\n", total_time_taken);
 
 	printf("\nsum = %d\n", sum);
 
